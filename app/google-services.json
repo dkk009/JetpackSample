@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "204222351422",
+    "firebase_url": "https://androidjetpacksample.firebaseio.com",
+    "project_id": "androidjetpacksample",
+    "storage_bucket": "androidjetpacksample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204222351422:android:fb137574f3e34ea743e96f",
+        "android_client_info": {
+          "package_name": "com.example.androidjetpacksamples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204222351422-u53uq591pioff1ru8ksvsq9og6c5l7hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-VFWrdjTSMfCZYQ71G1BOgcETFU3ZETE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204222351422-u53uq591pioff1ru8ksvsq9og6c5l7hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

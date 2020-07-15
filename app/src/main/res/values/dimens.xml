@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="welcome_text_top_margin">20dp</dimen>
+    <dimen name="img_avatar_height">72dp</dimen>
+    <dimen name="img_avatar_width">72dp</dimen>
+    <dimen name="viewholder_repo_bottom_margin">10dp</dimen>
+    <dimen name="repo_list_top_margin">10dp</dimen>
+</resources>
