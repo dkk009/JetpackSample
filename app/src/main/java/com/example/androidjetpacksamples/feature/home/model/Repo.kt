@@ -1,8 +1,11 @@
 package com.example.androidjetpacksamples.feature.home.model
 
+import android.os.Parcelable
 import androidx.room.*
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class Repo(
     @PrimaryKey @SerializedName("id") val repoId: Long,
@@ -11,8 +14,9 @@ data class Repo(
     val url: String?,
     @Embedded
     val owner: Owner
-)
+) : Parcelable
 
+@Parcelize
 @Entity
 data class Owner(
     val login: String,
@@ -21,7 +25,7 @@ data class Owner(
     val avatar: String?,
     @SerializedName("followers_url")
     val followersUrl: String?
-)
+) : Parcelable
 
 @Entity(primaryKeys = ["repoId", "ownerId"])
 data class RepoOwnerCrossRef(

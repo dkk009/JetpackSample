@@ -21,20 +21,21 @@ object BindingAdapter {
             recyclerView.adapter = adapter
         }
         if (recyclerView.adapter is BindableAdapter<*>) {
+            (recyclerView.adapter as BindableAdapter<T>).setOnItemClickListener(onItemClickListener)
             if (data.value != null) {
                 (recyclerView.adapter as BindableAdapter<T>).setData(data = data.value!!)
             } else {
                 (recyclerView.adapter as BindableAdapter<T>).setData(data = emptyList())
             }
-            (recyclerView.adapter as BindableAdapter<T>).setOnItemClickListener(onItemClickListener)
         }
     }
 
     @BindingAdapter("avatar")
     @JvmStatic
     fun loadAvatar(imageView: ImageView, url: String?) {
+        imageView.setImageResource(0)
         if (url.isNullOrEmpty().not()) {
-            Glide.with(imageView).load(url).submit()
+            Glide.with(imageView).load(url).into(imageView)
         }
     }
 }

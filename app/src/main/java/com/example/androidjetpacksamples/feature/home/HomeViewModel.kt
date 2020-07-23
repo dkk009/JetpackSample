@@ -1,8 +1,11 @@
 package com.example.androidjetpacksamples.feature.home
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.androidjetpacksamples.R
+import com.example.androidjetpacksamples.app.ScreenNavigation
 import com.example.androidjetpacksamples.base.BaseViewModel
 import com.example.androidjetpacksamples.base.OnItemClickListener
 import com.example.androidjetpacksamples.feature.home.model.Repo
@@ -15,6 +18,9 @@ class HomeViewModel @Inject constructor(private val homeUseCase: HomeUseCase) : 
 
     private val _repoListLiveData = MutableLiveData<List<Repo>>()
     private val _repoList = mutableListOf<Repo>()
+    private val _screenNavigation = MutableLiveData<ScreenNavigation>()
+    val screenNavigation: LiveData<ScreenNavigation>
+        get() = _screenNavigation
     val repoListLiveData: LiveData<List<Repo>>
         get() = _repoListLiveData
 
@@ -36,7 +42,13 @@ class HomeViewModel @Inject constructor(private val homeUseCase: HomeUseCase) : 
     }
 
     override fun onItemClick(dataModel: Any, pos: Int, tag: String) {
-        Timber.d("ItemClicked:$pos, data:$dataModel")
+        _screenNavigation.postValue(
+            ScreenNavigation(
+                data = dataModel as Parcelable,
+                screenId = R.id.action_homeFragment_to_repoDetailsFragment
+            )
+        )
+        Timber.d("Data item clicked:$pos")
     }
 
     override fun onCleared() {

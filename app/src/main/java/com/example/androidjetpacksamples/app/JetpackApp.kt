@@ -17,6 +17,4 @@ class JetpackApp : DaggerApplication() {
         appComponent.injectApp(this)
         return appComponent
     }
-
-
 }

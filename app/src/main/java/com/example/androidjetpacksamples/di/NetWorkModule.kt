@@ -33,7 +33,7 @@ class NetWorkModule {
     @Provides
     fun provideDebugBuilder(): Interceptor {
         val httpLoginInterceptor = HttpLoggingInterceptor()
-        httpLoginInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        httpLoginInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return httpLoginInterceptor
     }
 }
