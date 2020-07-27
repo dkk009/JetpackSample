@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_tesViewPagerFragment"
+            app:destination="@id/tesViewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -21,4 +24,8 @@
         app:popUpTo="@id/splashFragment"
         app:popUpToInclusive="true"
         app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/tesViewPagerFragment"
+        android:name="com.example.androidjetpacksamples.feature.viewpager.TestViewPagerFragment"
+        android:label="TesViewPagerFragment" />
 </navigation>

@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.androidjetpacksamples.feature.home.AdapterRepoItem
+import com.example.androidjetpacksamples.feature.home.model.Repo
+import timber.log.Timber
 
 object BindingAdapter {
     @BindingAdapter("itemList", "itemClickListener")
@@ -17,16 +19,12 @@ object BindingAdapter {
     ) {
         var adapter = recyclerView.adapter as? AdapterRepoItem
         if (adapter == null) {
-            adapter = AdapterRepoItem()
+            adapter = AdapterRepoItem(data.value as? List<Repo> ?: emptyList<Repo>())
             recyclerView.adapter = adapter
         }
         if (recyclerView.adapter is BindableAdapter<*>) {
             (recyclerView.adapter as BindableAdapter<T>).setOnItemClickListener(onItemClickListener)
-            if (data.value != null) {
-                (recyclerView.adapter as BindableAdapter<T>).setData(data = data.value!!)
-            } else {
-                (recyclerView.adapter as BindableAdapter<T>).setData(data = emptyList())
-            }
+            adapter.notifyDataSetChanged()
         }
     }
 

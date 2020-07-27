@@ -5,4 +5,5 @@
     <string name="sign_in">Sign IN</string>
     <string name="sign_up">Sign Up</string>
     <string name="welcome_to_git_hub">Welcome to Git Hub</string>
+    <string name="add">ADD</string>
 </resources>

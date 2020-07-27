@@ -45,6 +45,7 @@ ext{
     firebase_message = "20.2.3"
     okhttp = "4.7.2"
     glide = "4.11.0"
+    viewpager2 = "1.0.0"
 }
 
 task clean(type: Delete) {

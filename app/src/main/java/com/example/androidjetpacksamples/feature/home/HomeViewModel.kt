@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(private val homeUseCase: HomeUseCase) : 
         get() = _repoListLiveData
 
     init {
+        _repoListLiveData.value = _repoList
         fetchPublicRepo()
     }
 

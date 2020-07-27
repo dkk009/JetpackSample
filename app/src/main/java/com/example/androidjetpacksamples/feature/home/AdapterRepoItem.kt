@@ -11,8 +11,9 @@ import com.example.androidjetpacksamples.databinding.ViewholderGithubRepoBinding
 import com.example.androidjetpacksamples.feature.home.model.Repo
 import timber.log.Timber
 
-class AdapterRepoItem() : RecyclerView.Adapter<ViewHolderRepoItem>(), BindableAdapter<Repo> {
-    private var repoList: List<Repo>? = null
+class AdapterRepoItem(private var repoList: List<Repo>) :
+    RecyclerView.Adapter<ViewHolderRepoItem>(), BindableAdapter<Repo> {
+
     private var onItemClickListener: OnItemClickListener<Repo>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderRepoItem {
         val binder = DataBindingUtil.inflate<ViewholderGithubRepoBinding>(
@@ -25,11 +26,11 @@ class AdapterRepoItem() : RecyclerView.Adapter<ViewHolderRepoItem>(), BindableAd
     }
 
     override fun getItemCount(): Int {
-        return repoList?.size ?: 0
+        return repoList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolderRepoItem, position: Int) {
-        holder.onBindData(repoList?.get(position)!!, onItemClickListener)
+        holder.onBindData(repoList[position], onItemClickListener)
     }
 
     override fun setData(data: List<Repo>) {
