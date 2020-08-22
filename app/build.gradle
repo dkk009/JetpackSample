@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.androidjetpacksamples"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -123,5 +123,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
+
+    implementation 'com.evrencoskun.library:tableview:0.8.9.2'
 }
 
