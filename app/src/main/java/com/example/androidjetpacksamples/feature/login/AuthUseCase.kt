@@ -10,5 +10,5 @@ interface AuthUseCase {
     fun login(loginUIData: LoginUIData): LiveData<List<User>>
     fun getInitialLoginData(): LoginUIData
     fun getLoginedUserData(user: List<User>): LoginResource
-    suspend fun addUser(user: User)
+    suspend fun addUser(user: User): Long
 }

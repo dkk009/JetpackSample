@@ -10,7 +10,7 @@ class AuthUseCaseImpl @Inject constructor(
     private var dataMapper: AuthUiDataMapper
 ) : AuthUseCase {
     override fun isValidLoginData(loginUIData: LoginUIData): Boolean {
-        return loginUIData.userName.isNullOrBlank().not() && loginUIData.password.isNullOrBlank()
+        return loginUIData.userName.isBlank().not() && loginUIData.password.isBlank()
             .not()
     }
 
@@ -29,8 +29,8 @@ class AuthUseCaseImpl @Inject constructor(
         } ?: LoginResource.LoginStatus(false)
     }
 
-    override suspend fun addUser(user: User) {
-        authRepository.addUser(user)
+    override suspend fun addUser(user: User): Long {
+        return authRepository.addUser(user)
     }
 
 }

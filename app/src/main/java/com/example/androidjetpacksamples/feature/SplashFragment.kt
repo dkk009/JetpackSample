@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.androidjetpacksamples.R
 import com.example.androidjetpacksamples.base.BaseFragment
-import com.example.androidjetpacksamples.base.IntrNavGraph
 
 class SplashFragment : BaseFragment() {
 

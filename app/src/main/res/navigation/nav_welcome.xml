@@ -9,7 +9,9 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_tesViewPagerFragment"
             app:destination="@id/tesViewPagerFragment" />
@@ -21,9 +23,9 @@
     <action
         android:id="@+id/move_to_login"
         app:destination="@id/loginFragment"
-        app:popUpTo="@id/splashFragment"
-        app:popUpToInclusive="true"
-        app:launchSingleTop="true" />
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_welcome"
+        app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/tesViewPagerFragment"
         android:name="com.example.androidjetpacksamples.feature.viewpager.TestViewPagerFragment"

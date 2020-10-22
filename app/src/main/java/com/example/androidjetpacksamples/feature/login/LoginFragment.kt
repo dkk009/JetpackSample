@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.lifecycle.Observer
 import com.example.androidjetpacksamples.R
 import com.example.androidjetpacksamples.base.BaseFragment
+import com.example.androidjetpacksamples.base.IntrNavGraph
+import com.example.androidjetpacksamples.base.LoginResource
 import com.example.androidjetpacksamples.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
@@ -32,8 +34,23 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentLoginBinding!!.buttonSignIn.setOnClickListener { }
+        loginViewModel.loginLiveData.observe(viewLifecycleOwner, loginDataObserver())
+    }
 
+    private fun loginDataObserver(): Observer<in LoginResource> {
+        return Observer {
+            if (null != it) {
+                when (it) {
+                    is LoginResource.LoginStatus -> {
+                        if (it.isLogin) {
+                            if (activity is IntrNavGraph) {
+                                (activity as IntrNavGraph).updateNavGraph(navGraphId = R.navigation.nav_home)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

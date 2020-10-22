@@ -6,5 +6,5 @@ import com.example.androidjetpacksamples.room.entities.User
 interface AuthRepository {
 
     fun login(user: User): LiveData<List<User>>
-    suspend fun addUser(user: User)
+    suspend fun addUser(user: User):Long
 }

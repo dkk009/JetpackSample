@@ -1,7 +1,10 @@
 package com.example.androidjetpacksamples.room.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import com.example.androidjetpacksamples.room.entities.User
 
 
@@ -14,8 +17,8 @@ interface UserDao {
     @Query("SELECT * FROM USER WHERE user_name LIKE :userName AND password LIKE :userPassword")
     fun getUser(userName: String, userPassword: String): LiveData<List<User>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addUser(user: User)
+    @Insert
+    suspend fun addUser(user: User): Long
 
     @Delete
     suspend fun deleteUser(user: User)

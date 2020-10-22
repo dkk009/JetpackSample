@@ -9,6 +9,7 @@ import com.example.androidjetpacksamples.base.LoginResource
 import com.example.androidjetpacksamples.room.entities.User
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
@@ -20,6 +21,11 @@ class LoginViewModel @Inject constructor(
         get() = _loginLiveData
 
 
+    init {
+        viewModelScope.launch {
+
+        }
+    }
     override fun getInitialLoginUiData(): LoginUIData {
         return authUseCase.getInitialLoginData()
     }
@@ -46,9 +52,15 @@ class LoginViewModel @Inject constructor(
             loginUIData.enableLogin.set(false)
             Timber.d("Add User Method invoked")
             val time = System.currentTimeMillis()
-            authUseCase.addUser(User(loginUIData.userName, loginUIData.password))
-            Timber.d("Add User Method duration:${System.currentTimeMillis() - time}")
-            loginUIData.enableLogin.set(true)
+            try {
+                val id = authUseCase.addUser(User(loginUIData.userName, loginUIData.password))
+                Timber.d("Add User Method duration:${System.currentTimeMillis() - time},:Id:$id")
+                handleLoginClick(loginUIData)
+                loginUIData.enableLogin.set(true)
+            } catch ( e: Exception){
+                Timber.d("Insert operation failed:$e")
+            }
+
         }
     }
 }
