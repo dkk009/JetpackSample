@@ -22,7 +22,6 @@ class HomeRepositoryImpl(
     override suspend fun fetchPublicRepos(): List<Repo> {
         var repolist = emptyList<Repo>()
         try {
-            delay(3000L)
             repolist = remoteService.getPublicRepos()
             localDatabase.repoDao().insertAll(repolist)
         } catch (exc: HttpException) {

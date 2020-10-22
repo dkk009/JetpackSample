@@ -22,7 +22,7 @@ class SplashFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.postDelayed({
-            view.findNavController().navigate(R.id.action_splashFragment_to_tesViewPagerFragment)
+            view.findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             /*if (activity is IntrNavGraph) {
                 (activity as IntrNavGraph).updateNavGraph(navGraphId = R.navigation.nav_home)
             }*/
