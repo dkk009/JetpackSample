@@ -27,13 +27,13 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     private fun getScreenNavigationObserver(): Observer<in ScreenNavigation> {
         return Observer {
             when (it?.screenId) {
-                R.id.action_homeFragment_to_repoDetailsFragment -> moveToRepoDetailsFragment(it?.data)
+                R.id.action_homeFragment_to_repoDetailsFragment -> moveToRepoDetailsFragment(it.data)
             }
         }
     }
 
     private fun moveToRepoDetailsFragment(data: Parcelable?) {
-       // HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(data = data as Repo)
+        HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(data = data as Repo)
     }
 
 

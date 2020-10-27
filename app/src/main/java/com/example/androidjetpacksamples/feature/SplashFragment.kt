@@ -22,9 +22,6 @@ class SplashFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         view.postDelayed({
             view.findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-            /*if (activity is IntrNavGraph) {
-                (activity as IntrNavGraph).updateNavGraph(navGraphId = R.navigation.nav_home)
-            }*/
         }, 1000)
     }
 
