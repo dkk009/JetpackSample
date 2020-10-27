@@ -123,7 +123,5 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
-
-    implementation 'com.evrencoskun.library:tableview:0.8.9.2'
 }
 
