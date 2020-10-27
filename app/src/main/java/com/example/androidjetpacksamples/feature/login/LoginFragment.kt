@@ -11,6 +11,7 @@ import com.example.androidjetpacksamples.base.BaseFragment
 import com.example.androidjetpacksamples.base.IntrNavGraph
 import com.example.androidjetpacksamples.base.LoginResource
 import com.example.androidjetpacksamples.databinding.FragmentLoginBinding
+import com.example.androidjetpacksamples.extension.hideKeyBoard
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
@@ -44,6 +45,7 @@ class LoginFragment : BaseFragment() {
                     is LoginResource.LoginStatus -> {
                         if (it.isLogin) {
                             if (activity is IntrNavGraph) {
+                                hideKeyBoard()
                                 (activity as IntrNavGraph).updateNavGraph(navGraphId = R.navigation.nav_home)
                             }
                         }

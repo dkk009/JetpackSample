@@ -7,4 +7,8 @@
     <dimen name="repo_list_top_margin">10dp</dimen>
     <dimen name="detail_screen_name_margin_top">20dp</dimen>
     <dimen name="large_text_size">24sp</dimen>
+    <dimen name="img_avatar_top_margin">20dp</dimen>
+    <dimen name="img_avatar_left_margin">10dp</dimen>
+    <dimen name="img_avatar_name_left_margin">10dp</dimen>
+    <dimen name="repo_name_left_margin">10dp</dimen>
 </resources>
