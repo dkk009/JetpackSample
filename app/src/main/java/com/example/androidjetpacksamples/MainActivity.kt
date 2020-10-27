@@ -20,14 +20,6 @@ class MainActivity : AppCompatActivity(), IntrNavGraph {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Timber.d("PreferenceManager:$preferenceManager")
-
-        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Timber.d("FCM Id:${task.result?.token}")
-            } else {
-                Timber.d("Failed to retrieve id:${task.exception}")
-            }
-        }
     }
 
     override fun updateNavGraph(navGraphId: Int) {

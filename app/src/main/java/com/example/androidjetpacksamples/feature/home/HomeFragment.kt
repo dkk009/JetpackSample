@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.androidjetpacksamples.R
 import com.example.androidjetpacksamples.app.ScreenNavigation
 import com.example.androidjetpacksamples.base.BaseFragment
 import com.example.androidjetpacksamples.databinding.FragmentHomeBinding
 import com.example.androidjetpacksamples.feature.home.model.Repo
+import timber.log.Timber
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
@@ -16,12 +18,16 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     lateinit var homeViewModel: HomeViewModel
     private var homeFragmentBinding: FragmentHomeBinding? = null
     private lateinit var adapterRepoItem: AdapterRepoItem
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        homeViewModel.screenNavigation.observe(this, getScreenNavigationObserver())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         homeFragmentBinding = FragmentHomeBinding.bind(view)
         homeFragmentBinding?.lifecycleOwner = viewLifecycleOwner
         homeFragmentBinding?.homeViewModel = homeViewModel
-        homeViewModel.screenNavigation.observe(viewLifecycleOwner, getScreenNavigationObserver())
     }
 
     private fun getScreenNavigationObserver(): Observer<in ScreenNavigation> {
@@ -33,7 +39,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     private fun moveToRepoDetailsFragment(data: Parcelable?) {
-        HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(data = data as Repo)
+        Timber.d("Moving to repo details screen")
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(data = data as Repo)
+        view?.findNavController()?.navigate(action)
     }
 
 

@@ -3,6 +3,7 @@ package com.example.androidjetpacksamples.di
 import com.example.androidjetpacksamples.feature.SplashFragment
 import com.example.androidjetpacksamples.feature.home.HomeFragment
 import com.example.androidjetpacksamples.feature.login.LoginFragment
+import com.example.androidjetpacksamples.feature.repodetails.RepoDetailsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,4 +17,7 @@ abstract class FragmentProvider {
 
     @ContributesAndroidInjector(modules = [HomeFragmentModule::class, ViewModelModule::class])
     abstract fun provideHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector()
+    abstract fun provideRepoDetails(): RepoDetailsFragment
 }
